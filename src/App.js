@@ -4,6 +4,7 @@ import  Header from './components/Header'
 import FeedbackList from './components/FeedbackList'
 import FeedbackData from './data/FeedbackData'
 import Card from './components/shared/Card'
+ 
 
 function App(){
     // const title = 'Blog post'
@@ -25,7 +26,14 @@ function App(){
     // React.createElement('h1',{},'My App')
 
     // )
-    const [feedback] = useState(FeedbackData)
+    const [feedback,setFeedback] = useState(FeedbackData)
+    const deleteFeedback  = (id) =>{
+        // console.log('App',id)
+        if(window.confirm('Are you sure want to delete that item?')){
+            setFeedback(feedback.filter((item)=> item.id !==id))
+        }
+    
+    }
 
     return (
     <>
@@ -42,8 +50,10 @@ function App(){
                 </ul> 
             </div> */}
             {/* <h1>My App</h1> */}
-            <FeedbackList feedback = {feedback}/>
-            <Card>Hello world</Card>
+            <FeedbackList feedback = {feedback}
+            handleDelete={deleteFeedback}/>
+            {/* <Card>Hello world</Card> */}
+            {/* <Card/> */}
 
         </div>
     </>

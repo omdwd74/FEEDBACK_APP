@@ -1,5 +1,8 @@
 import Card from "./shared/Card"
-function FeedbackItem({item}){
+import {FaTimes} from 'react-icons/fa'
+import PropTypes from "prop-types"
+
+function FeedbackItem({item,handleDelete}){
     // const [rating,setRating] = useState(7)
     // const [text] = useState('This is an example of feedback item')
 
@@ -7,10 +10,14 @@ function FeedbackItem({item}){
     //     setRating((prev)=>{
     //         return prev+1;
     //     })
+    // } 
+    // const handleClick = (id) =>{
+    //     console.log(id)
     // }
     return (
         <Card >
             <div className="num-display">{item.rating}</div>
+            <button  onClick = {()=> handleDelete(item.id)} className="close"><FaTimes color="purple"/></button>
             <div className="text-display"> {item.text}</div>
             {/* <button onClick={handleClick}>Click</button> */}
 
@@ -18,4 +25,8 @@ function FeedbackItem({item}){
 
     )
 }
+FeedbackItem.propTypes = {
+    item : PropTypes.object.isRequired,
+}
+
 export default FeedbackItem
