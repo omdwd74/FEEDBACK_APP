@@ -1,6 +1,9 @@
 import React from 'react'
+import { useState } from 'react'
 import  Header from './components/Header'
-import FeedbackItem from './components/FeedbackItem'
+import FeedbackList from './components/FeedbackList'
+import FeedbackData from './data/FeedbackData'
+import Card from './components/shared/Card'
 
 function App(){
     // const title = 'Blog post'
@@ -11,7 +14,7 @@ function App(){
     //     },
     //     {
     //         id: 2,text :'comment 2'
-    //     },{
+    //     },{ 
     //         id: 3,text :'comment 3'
     //     },{
     //         id: 4,text :'comment 4'
@@ -22,6 +25,8 @@ function App(){
     // React.createElement('h1',{},'My App')
 
     // )
+    const [feedback] = useState(FeedbackData)
+
     return (
     <>
         <Header />
@@ -37,7 +42,8 @@ function App(){
                 </ul> 
             </div> */}
             {/* <h1>My App</h1> */}
-            <FeedbackItem/>
+            <FeedbackList feedback = {feedback}/>
+            <Card>Hello world</Card>
 
         </div>
     </>
