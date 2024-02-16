@@ -4,6 +4,7 @@ import  Header from './components/Header'
 import FeedbackList from './components/FeedbackList'
 import FeedbackData from './data/FeedbackData'
 import Card from './components/shared/Card'
+import FeedbackStats from './components/FeedbackStats'
  
 
 function App(){
@@ -50,6 +51,7 @@ function App(){
                 </ul> 
             </div> */}
             {/* <h1>My App</h1> */}
+            <FeedbackStats feedback = {feedback}/>
             <FeedbackList feedback = {feedback}
             handleDelete={deleteFeedback}/>
             {/* <Card>Hello world</Card> */}
