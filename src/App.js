@@ -1,5 +1,6 @@
 import React from 'react'
 import {v4 as uuidv4} from 'uuid'
+import {BrowserRouter as Router , Route, Routes} from 'react-router-dom'
 import { useState } from 'react'
 import  Header from './components/Header'
 import FeedbackList from './components/FeedbackList'
@@ -7,10 +8,10 @@ import FeedbackData from './data/FeedbackData'
 import Card from './components/shared/Card'
 import FeedbackStats from './components/FeedbackStats'
 import FeedbackForm from './components/FeedbackForm'
- 
+import AboutPage    from './pages/AboutPage' 
 
 function App(){
-    // const title = 'Blog post'
+    // const title = 'Blog post' 
     // const body = 'This is my blog post channel'
     // const comments  = [
     //     {
@@ -44,28 +45,32 @@ function App(){
 
     return (
     <>
+    
         <Header />
         <div className='container'>
-            {/* <h1>{title.toUpperCase()} </h1>
-            <h2>{body}</h2>
-            <div className=''comments> 
-            <h3>comments ({comments.length})</h3>
-               <ul>
-                {comments.map((comment,index)=>(
-                    <li key ={index}> {comment.text}</li>
-                ))}
-                </ul> 
-            </div> */}
-            {/* <h1>My App</h1> */}
-            <FeedbackForm handleAdd ={addFeedback} feedback = {feedback}/> 
+            
+            <Router>
+            <Routes>
+          <Route exact path ='/' element ={ <>
+          <FeedbackForm handleAdd ={addFeedback} feedback = {feedback}/> 
             <FeedbackStats feedback = {feedback}/>
             <FeedbackList feedback = {feedback}
             handleDelete={deleteFeedback}/>
-            <Card>Hello world</Card>
-            {/* <Card/> */}
+            </>
+          
+            } />
 
+           
+            <Route path='/about' element={<AboutPage/>}/>
+
+           </Routes>
+        
+          
+            
+            </Router>
         </div>
-    </>
+      </>
+    
     )
             
         
